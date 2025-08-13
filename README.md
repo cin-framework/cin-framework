@@ -1,20 +1,45 @@
-# CIN Framework
+# **CIN Framework**
 
-**CIN Framework** is an advanced web framework built on PHP, designed to push the boundaries of modern web development.  
-This repository contains the official downloadable package of the CIN Framework.
+<div align="center">
+  <img src="https://github.com/cin-framework/cin-web/raw/main/assets/img/CIN.svg" alt="logo cin framework" width="200" height="200">
+</div>
 
-## 📥 Download
-- You can download the `/cin` folder based on the required version.
-- Or get the **latest release** for immediate use.
-- For CLI management, use **[CIN CLI](https://github.com/cin-framework/cin-cli)**.
+**CIN Framework** is an advanced web framework built on PHP, designed to push the boundaries of modern web development.
 
-## 🌐 Official Website
-[https://www.cin-framework.com](https://www.cin-framework.com)
+This repository serves as the official storage for the CIN Framework source code.
+
+## 📥 Download & Installation
+
+**Important:** This repository is for storage purposes only. To download and install the CIN Framework, you must use the official **CIN CLI** tool.
+
+### Using CIN CLI
+
+To download and install the CIN Framework, you must use the official **CIN CLI** tool.
+
+**Get CIN CLI:** [https://github.com/cin-framework/cin-cli](https://github.com/cin-framework/cin-cli)
+
+For detailed installation instructions and CLI usage, visit our official website.
+
+## 🌐 Official Resources
+
+- **Website:** [https://www.cin-framework.com](https://www.cin-framework.com)
+- **CLI Tool:** [CIN CLI Repository](https://github.com/cin-framework/cin-cli)
+- **Documentation:** Available on the official website
+
+## 📧 Contact
+
+For support and inquiries:
+- **Support:** support@cin-framework.com
+- **General Contact:** contact@cin-framework.com
+- **Development:** dev@cin-framework.com
+- **Administration:** admin@cin-framework.com
+- **Creator:** mawi@cin-framework.com
 
 ## 📜 License
+
 This framework is proprietary software.  
 All rights are reserved by **CIN Framework**.  
 You may **modify** the source code for personal or internal use.  
 You may **NOT** redistribute, sublicense, or sell this framework in any form.
 
-© CIN Framework — All Rights Reserved.
+> © CIN FRAMEWORK — All Rights Reserved.

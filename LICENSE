@@ -3,14 +3,35 @@ Version 1.0 — © CIN Framework — All Rights Reserved
 
 This software and all its components are the exclusive property of CIN Framework.
 
+## 📋 Granted Rights
+
 You are granted:
-- The right to use and modify the software for personal or internal purposes only.
+- The right to use and modify the software for personal or internal purposes only
+- The right to download and install via official CIN CLI tool only
+
+## 🚫 Prohibited Actions
 
 You are NOT granted:
-- The right to redistribute, sublicense, sell, or otherwise make the software available to any third party.
-- The right to remove or alter any copyright or trademark notices.
+- The right to redistribute, sublicense, sell, or otherwise make the software available to any third party
+- The right to remove or alter any copyright or trademark notices
+- The right to clone or fork this repository for distribution purposes
+- The right to bypass the official CIN CLI installation process
+
+## ⚖️ License Enforcement
 
 Violation of these terms will result in immediate termination of your rights to use the software.
 
-For official versions, updates, and documentation, visit:
-https://www.cin-framework.com
+## 🌐 Official Resources
+
+- **Website:** https://www.cin-framework.com
+- **CLI Tool:** https://github.com/cin-framework/cin-cli
+- **Support:** support@cin-framework.com
+
+## 📧 Contact
+
+For licensing inquiries:
+- **Administration:** admin@cin-framework.com
+- **General Contact:** contact@cin-framework.com
+- **Creator:** mawi@cin-framework.com
+
+© CIN Framework — All Rights Reserved.
