@@ -1,0 +1,9 @@
+<?php
+
+declare(strict_types=1);
+
+require_once __DIR__ . '/cin/cin.php';
+
+dominator();
+
+dominator_htmx('NamePage'); 
