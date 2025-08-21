@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/img/CIN.svg" alt="CIN Framework Logo" width="200" height="200">
+  <img src="https://cin-framework.github.io/.github/assets/img/CIN.svg" alt="CIN Framework Logo" width="200" height="200">
 </div>
 
 <h1 align="center">CIN FRAMEWORK CORE</h1>
@@ -329,5 +329,6 @@ This framework security policy is effective as of 2025-08-21 and is subject to u
 </div>
 
 ---
+
 
 **Official Slogan**: CIN FRAMEWORK – WEB 4 – POWERED BY LOCAL SELF-SUFFICIENCY AND AGGRESSIVE SECURITY
