@@ -14,7 +14,7 @@ dominator_seo_meta_image('https://www.cin-framework.com/assets/images/logo.png')
 dominator_seo_meta_url('https://www.cin-framework.com/test-seo');
 dominator_seo_meta_site_name('CIN Framework');
 dominator_seo_meta_viewport('width=device-width, initial-scale=1.0');
-dominator_seo_meta_copyright('© 2024 CIN Framework. All rights reserved.');
+dominator_seo_meta_copyright('© 2025 CIN Framework. All rights reserved.');
 dominator_seo_meta_language('ar');
 dominator_seo_meta_revisit_after('7 days');
 dominator_seo_meta_rating('general');
