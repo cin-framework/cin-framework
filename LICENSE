@@ -1,58 +1,37 @@
-PROPRIETARY SOFTWARE LICENSE
+CIN FRAMEWORK LICENSE AGREEMENT
+Version 1.0 — © CIN Framework — All Rights Reserved
 
-Copyright (c) 2025-08-21 CIN FRAMEWORK. All rights reserved.
+This software and all its components are the exclusive property of CIN Framework.
 
-This software and associated documentation files (the "Software") are proprietary
-and confidential to CIN FRAMEWORK. The Software is protected by copyright laws
-and international copyright treaties, as well as other intellectual property laws
-and treaties.
+## 📋 Granted Rights
 
-GRANT OF LICENSE:
-Subject to the terms and conditions of this License, CIN FRAMEWORK hereby grants
-you a limited, non-exclusive, non-transferable, revocable license to use the
-Software solely for your personal or internal business purposes.
+You are granted:
+- The right to use and modify the software for personal or internal purposes only
+- The right to download and install via official CIN CLI tool only
 
-RESTRICTIONS:
-You may NOT:
-1. Distribute, sublicense, lease, rent, or sell the Software or any portion thereof
-2. Redistribute the Software in any form, whether modified or unmodified
-3. Reverse engineer, decompile, disassemble, or attempt to derive the source code
-4. Remove or alter any proprietary notices, labels, or marks on the Software
-5. Use the Software for any commercial purposes without explicit written permission
-6. Create derivative works based on the Software
-7. Transfer your rights under this License to any third party
+## 🚫 Prohibited Actions
 
-OWNERSHIP:
-CIN FRAMEWORK retains all right, title, and interest in and to the Software,
-including all intellectual property rights therein. This License does not grant
-you any ownership rights in the Software.
+You are NOT granted:
+- The right to redistribute, sublicense, sell, or otherwise make the software available to any third party
+- The right to remove or alter any copyright or trademark notices
+- The right to clone or fork this repository for distribution purposes
+- The right to bypass the official CIN CLI installation process
 
-TERMINATION:
-This License is effective until terminated. Your rights under this License will
-terminate automatically without notice from CIN FRAMEWORK if you fail to comply
-with any term(s) of this License. Upon termination, you must cease all use of
-the Software and destroy all copies.
+## ⚖️ License Enforcement
 
-DISCLAIMER OF WARRANTIES:
-THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+Violation of these terms will result in immediate termination of your rights to use the software.
 
-LIMITATION OF LIABILITY:
-IN NO EVENT SHALL CIN FRAMEWORK BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+## 🌐 Official Resources
 
-CONTACT INFORMATION:
-For licensing inquiries, please contact:
-- Support: support@cin-framework.com
-- General Contact: contact@cin-framework.com
-- Administration: admin@cin-framework.com
-- Creator: mawi@cin-framework.com
+- **Website:** https://www.cin-framework.com
+- **CLI Tool:** https://github.com/cin-framework/cin-cli
+- **Support:** support@cin-framework.com
 
-This license is governed by the laws of Morocco and is effective as of 2025-08-21.
+## 📧 Contact
 
-© 2025 CIN FRAMEWORK — All Rights Reserved.
-Developed by Ayoub Alarjani (Mawi Man)
-Official Website: https://www.cin-framework.com
+For licensing inquiries:
+- **Administration:** admin@cin-framework.com
+- **General Contact:** contact@cin-framework.com
+- **Creator:** mawi@cin-framework.com
+
+© CIN Framework — All Rights Reserved.
