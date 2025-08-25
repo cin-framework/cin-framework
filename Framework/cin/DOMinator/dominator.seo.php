@@ -659,6 +659,13 @@ function replace_dynamic_placeholders(string $content, array $dynamicValues): st
         $content = str_replace($shortPlaceholder, $value, $content);
         $content = str_replace($fullPlaceholder, $value, $content);
         
+        // Handle meta tags with underscores instead of hyphens
+        $underscoreKey = str_replace('-', '_', $key);
+        if ($underscoreKey !== $key) {
+            $underscorePlaceholder = "{{dominator_seo_meta_{$underscoreKey}}}";
+            $content = str_replace($underscorePlaceholder, $value, $content);
+        }
+        
         // Handle specific mappings for different categories
         $categoryMappings = [
             'og_' => 'og',
