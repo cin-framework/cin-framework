@@ -652,8 +652,29 @@ function apply_seo_meta(string $page): string
 function replace_dynamic_placeholders(string $content, array $dynamicValues): string
 {
     foreach ($dynamicValues as $key => $value) {
-        $placeholder = "{{dominator_seo_{$key}}}";
-        $content = str_replace($placeholder, $value, $content);
+        // Handle both short and full placeholder names
+        $shortPlaceholder = "{{dominator_seo_{$key}}}";
+        $fullPlaceholder = "{{dominator_seo_meta_{$key}}}";
+        
+        $content = str_replace($shortPlaceholder, $value, $content);
+        $content = str_replace($fullPlaceholder, $value, $content);
+        
+        // Handle specific mappings for different categories
+        $categoryMappings = [
+            'og_' => 'og',
+            'twitter_' => 'twitter', 
+            'article_' => 'article',
+            'geo_' => 'geo',
+            'structured_data_' => 'structured_data'
+        ];
+        
+        foreach ($categoryMappings as $prefix => $category) {
+            if (strpos($key, $prefix) === 0) {
+                $categoryKey = substr($key, strlen($prefix));
+                $categoryPlaceholder = "{{dominator_seo_{$category}_{$categoryKey}}}";
+                $content = str_replace($categoryPlaceholder, $value, $content);
+            }
+        }
     }
     
     return $content;
