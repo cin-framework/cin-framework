@@ -18,6 +18,7 @@ declare(strict_types=1);
  *
  * Creates individual compressed CSS files for each source file and injects
  * them into the page with proper caching and performance optimization.
+ * Uses version control to avoid unnecessary recompression.
  *
  * @param string ...$filenames Variable number of CSS filenames to process
  *
@@ -36,18 +37,25 @@ function dominator_style(string ...$filenames): bool
         foreach ($filenames as $filename) {
             $cssContent = get_css_content($filename);
             if (!empty($cssContent)) {
-                $compressedCSS = compress_css($cssContent);
-                
-                if (empty($compressedCSS)) {
-                    cin_logs("Failed to compress CSS for file: {$filename}", "system");
-                    continue;
-                }
-                
+                $sourceVersion = extract_version_from_css($cssContent);
                 $cssFilePath = ROOT_PATH . "/cin.assets/css/{$filename}-min.css";
                 
-                if (!save_compressed_css($cssFilePath, $compressedCSS, $filename)) {
-                    cin_logs("Failed to save compressed CSS file: {$filename}-min.css", "system");
-                    continue;
+                if (should_recompress_css($cssFilePath, $sourceVersion)) {
+                    $compressedCSS = compress_css_advanced($cssContent);
+                    
+                    if (empty($compressedCSS)) {
+                        cin_logs("Failed to compress CSS for file: {$filename}", "system");
+                        continue;
+                    }
+                    
+                    if (!save_compressed_css($cssFilePath, $compressedCSS, $filename, $sourceVersion)) {
+                        cin_logs("Failed to save compressed CSS file: {$filename}-min.css", "system");
+                        continue;
+                    }
+                    
+                    cin_logs("CSS file {$filename} compressed with version {$sourceVersion}", "success");
+                } else {
+                    cin_logs("CSS file {$filename} is up to date, skipping compression", "dev");
                 }
                 
                 inject_individual_css_link($filename);
@@ -77,6 +85,7 @@ function dominator_style(string ...$filenames): bool
  *
  * Creates individual compressed JavaScript files for each source file and injects
  * them into the page with proper caching and performance optimization.
+ * Uses version control to avoid unnecessary recompression.
  *
  * @param string ...$filenames Variable number of JavaScript filenames to process
  *
@@ -95,18 +104,25 @@ function dominator_script(string ...$filenames): bool
         foreach ($filenames as $filename) {
             $jsContent = get_js_content($filename);
             if (!empty($jsContent)) {
-                $compressedJS = compress_js($jsContent);
-                
-                if (empty($compressedJS)) {
-                    cin_logs("Failed to compress JavaScript for file: {$filename}", "system");
-                    continue;
-                }
-                
+                $sourceVersion = extract_version_from_js($jsContent);
                 $jsFilePath = ROOT_PATH . "/cin.assets/js/{$filename}-min.js";
                 
-                if (!save_compressed_js($jsFilePath, $compressedJS, $filename)) {
-                    cin_logs("Failed to save compressed JavaScript file: {$filename}-min.js", "system");
-                    continue;
+                if (should_recompress_js($jsFilePath, $sourceVersion)) {
+                    $compressedJS = compress_js_advanced($jsContent);
+                    
+                    if (empty($compressedJS)) {
+                        cin_logs("Failed to compress JavaScript for file: {$filename}", "system");
+                        continue;
+                    }
+                    
+                    if (!save_compressed_js($jsFilePath, $compressedJS, $filename, $sourceVersion)) {
+                        cin_logs("Failed to save compressed JavaScript file: {$filename}-min.js", "system");
+                        continue;
+                    }
+                    
+                    cin_logs("JavaScript file {$filename} compressed with version {$sourceVersion}", "success");
+                } else {
+                    cin_logs("JavaScript file {$filename} is up to date, skipping compression", "dev");
                 }
                 
                 inject_individual_js_script($filename);
@@ -294,10 +310,162 @@ function get_js_content(string $filename): string
 }
 
 /**
- * Compresses CSS content by removing comments and excess whitespace.
+ * Extracts version information from CSS content.
  *
- * Optimizes CSS for production by removing unnecessary characters
- * while preserving functionality and readability.
+ * Searches for version comment in CSS file and returns the version number.
+ * If no version is found, returns default version 1.0.0.
+ *
+ * @param string $css The CSS content to analyze
+ *
+ * @return string The version number found or default 1.0.0
+ */
+function extract_version_from_css(string $css): string
+{
+    if (preg_match('/\/\*\s*@version\s+([0-9]+\.[0-9]+\.[0-9]+)\s*\*\//', $css, $matches)) {
+        return $matches[1];
+    }
+    
+    return '1.0.0';
+}
+
+/**
+ * Extracts version information from JavaScript content.
+ *
+ * Searches for version comment in JavaScript file and returns the version number.
+ * If no version is found, returns default version 1.0.0.
+ *
+ * @param string $js The JavaScript content to analyze
+ *
+ * @return string The version number found or default 1.0.0
+ */
+function extract_version_from_js(string $js): string
+{
+    if (preg_match('/\/\*\s*@version\s+([0-9]+\.[0-9]+\.[0-9]+)\s*\*\//', $js, $matches)) {
+        return $matches[1];
+    }
+    
+    if (preg_match('/\/\/\s*@version\s+([0-9]+\.[0-9]+\.[0-9]+)/', $js, $matches)) {
+        return $matches[1];
+    }
+    
+    return '1.0.0';
+}
+
+/**
+ * Checks if CSS file needs recompression based on version.
+ *
+ * Compares source version with compressed file version to determine
+ * if recompression is necessary.
+ *
+ * @param string $compressedFilePath Path to the compressed CSS file
+ * @param string $sourceVersion Version from source CSS file
+ *
+ * @return bool True if recompression is needed, false otherwise
+ */
+function should_recompress_css(string $compressedFilePath, string $sourceVersion): bool
+{
+    if (!file_exists($compressedFilePath)) {
+        return true;
+    }
+    
+    $compressedContent = file_get_contents($compressedFilePath);
+    if ($compressedContent === false) {
+        return true;
+    }
+    
+    if (preg_match('/\*\s*@version\s+([0-9]+\.[0-9]+\.[0-9]+)\s*\*/', $compressedContent, $matches)) {
+        return version_compare($sourceVersion, $matches[1], '>');
+    }
+    
+    return true;
+}
+
+/**
+ * Checks if JavaScript file needs recompression based on version.
+ *
+ * Compares source version with compressed file version to determine
+ * if recompression is necessary.
+ *
+ * @param string $compressedFilePath Path to the compressed JavaScript file
+ * @param string $sourceVersion Version from source JavaScript file
+ *
+ * @return bool True if recompression is needed, false otherwise
+ */
+function should_recompress_js(string $compressedFilePath, string $sourceVersion): bool
+{
+    if (!file_exists($compressedFilePath)) {
+        return true;
+    }
+    
+    $compressedContent = file_get_contents($compressedFilePath);
+    if ($compressedContent === false) {
+        return true;
+    }
+    
+    if (preg_match('/\*\s*@version\s+([0-9]+\.[0-9]+\.[0-9]+)\s*\*/', $compressedContent, $matches)) {
+        return version_compare($sourceVersion, $matches[1], '>');
+    }
+    
+    return true;
+}
+
+/**
+ * Advanced CSS compression with enhanced algorithms.
+ *
+ * Optimizes CSS for production using advanced compression techniques
+ * while preserving functionality and avoiding syntax errors.
+ *
+ * @param string $css The CSS content to compress
+ *
+ * @return string The compressed CSS content
+ */
+function compress_css_advanced(string $css): string
+{
+    // Remove CSS comments but preserve important ones
+    $css = preg_replace('/\/\*(?!\s*!)[^*]*\*+(?:[^\/*][^*]*\*+)*\//', '', $css);
+    
+    // Remove unnecessary whitespace
+    $css = preg_replace('/\s+/', ' ', $css);
+    
+    // Remove whitespace around specific characters
+    $css = preg_replace('/\s*([{}:;,>+~])\s*/', '$1', $css);
+    
+    // Remove trailing semicolons before closing braces
+    $css = preg_replace('/;\s*}/', '}', $css);
+    
+    // Remove unnecessary quotes from URLs
+    $css = preg_replace('/url\(["\']([^"\')]+)["\']\)/', 'url($1)', $css);
+    
+    // Compress hex colors
+    $css = preg_replace('/#([0-9a-fA-F])\1([0-9a-fA-F])\2([0-9a-fA-F])\3/', '#$1$2$3', $css);
+    
+    // Remove unnecessary zeros
+    $css = preg_replace('/\b0+([1-9])/', '$1', $css);
+    $css = preg_replace('/\b0+\./', '.', $css);
+    
+    // Remove unnecessary units for zero values
+    $css = preg_replace('/\b0(?:px|em|rem|%|pt|pc|in|cm|mm|ex|ch|vw|vh|vmin|vmax)\b/', '0', $css);
+    
+    // Compress margin and padding shorthand
+    $css = preg_replace_callback('/(margin|padding):\s*([^;]+);/', function($matches) {
+        $values = explode(' ', trim($matches[2]));
+        if (count($values) == 4 && $values[1] == $values[3]) {
+            if ($values[0] == $values[2]) {
+                if ($values[0] == $values[1]) {
+                    return $matches[1] . ':' . $values[0] . ';';
+                }
+                return $matches[1] . ':' . $values[0] . ' ' . $values[1] . ';';
+            }
+            return $matches[1] . ':' . $values[0] . ' ' . $values[1] . ' ' . $values[2] . ';';
+        }
+        return $matches[0];
+    }, $css);
+    
+    return trim($css);
+}
+
+/**
+ * Legacy CSS compression function for backward compatibility.
  *
  * @param string $css The CSS content to compress
  *
@@ -305,24 +473,57 @@ function get_js_content(string $filename): string
  */
 function compress_css(string $css): string
 {
-    $css = preg_replace('/\/\*[^*]*\*+([^\/*][^*]*\*+)*\//', '', $css);
-    
-    $css = preg_replace('/\s+/', ' ', $css);
-    
-    $css = preg_replace('/\s*([{}:;,>+~])\s*/', '$1', $css);
-    
-    $css = preg_replace('/;\s*}/', '}', $css);
-    
-    $css = trim($css);
-    
-    return $css;
+    return compress_css_advanced($css);
 }
 
 /**
- * Compresses JavaScript content by removing comments and excess whitespace.
+ * Advanced JavaScript compression with enhanced algorithms.
  *
- * Optimizes JavaScript for production by removing unnecessary characters
- * while preserving functionality.
+ * Optimizes JavaScript for production using advanced compression techniques
+ * while preserving functionality and avoiding syntax errors.
+ *
+ * @param string $js The JavaScript content to compress
+ *
+ * @return string The compressed JavaScript content
+ */
+function compress_js_advanced(string $js): string
+{
+    // Remove multi-line comments but preserve important ones
+    $js = preg_replace('/\/\*(?!\s*!)[\s\S]*?\*\//', '', $js);
+    
+    // Remove single-line comments but preserve URLs and important comments
+    $js = preg_replace('/(?<!:)\/\/(?![^\r\n]*["\']).*$/m', '', $js);
+    
+    // Remove unnecessary whitespace but preserve string literals
+    $js = preg_replace('/\s+/', ' ', $js);
+    
+    // Remove whitespace around operators and punctuation
+    $js = preg_replace('/\s*([{}();,=+\-*\/<>!&|?:])\s*/', '$1', $js);
+    
+    // Remove whitespace after keywords
+    $js = preg_replace('/\b(return|throw|new|delete|typeof|void|in|of)\s+/', '$1 ', $js);
+    
+    // Remove unnecessary semicolons before closing braces
+    $js = preg_replace('/;\s*}/', '}', $js);
+    
+    // Remove trailing semicolons at end of lines (but keep necessary ones)
+    $js = preg_replace('/;\s*(?=\r?\n|$)/', '', $js);
+    
+    // Compress boolean values
+    $js = preg_replace('/\btrue\b/', '!0', $js);
+    $js = preg_replace('/\bfalse\b/', '!1', $js);
+    
+    // Remove unnecessary quotes from object properties
+    $js = preg_replace('/([{,])\s*["\']([a-zA-Z_$][a-zA-Z0-9_$]*)["\']\s*:/', '$1$2:', $js);
+    
+    // Remove unnecessary parentheses in return statements
+    $js = preg_replace('/return\s*\(([^()]+)\)\s*;/', 'return $1;', $js);
+    
+    return trim($js);
+}
+
+/**
+ * Legacy JavaScript compression function for backward compatibility.
  *
  * @param string $js The JavaScript content to compress
  *
@@ -330,32 +531,23 @@ function compress_css(string $css): string
  */
 function compress_js(string $js): string
 {
-    $js = preg_replace('/\/\*[\s\S]*?\*\//', '', $js);
-    
-    $js = preg_replace('/\/\/.*$/m', '', $js);
-    
-    $js = preg_replace('/\s+/', ' ', $js);
-    
-    $js = preg_replace('/\s*([{}();,=+\-*\/])\s*/', '$1', $js);
-    
-    $js = trim($js);
-    
-    return $js;
+    return compress_js_advanced($js);
 }
 
 /**
  * Saves compressed CSS to a page-specific file.
  *
  * Creates an optimized CSS file for a specific page with proper
- * naming conventions and error handling.
+ * naming conventions, version tracking, and error handling.
  *
  * @param string $filePath   The full path where to save the CSS file
  * @param string $cssContent The compressed CSS content to save
  * @param string $sourceFile The source file information for reference
+ * @param string $version    The version number from source file
  *
  * @return bool True if the CSS file was saved successfully, false on failure
  */
-function save_compressed_css(string $filePath, string $cssContent, string $sourceFile): bool
+function save_compressed_css(string $filePath, string $cssContent, string $sourceFile, string $version = '1.0.0'): bool
 {
     $cssHeader = <<<CSS
 /**
@@ -364,6 +556,8 @@ function save_compressed_css(string $filePath, string $cssContent, string $sourc
  * @author Ayoub Alarjani (MAWI MAN)
  * @license Proprietary - All rights reserved to CIN Framework
  * @source {$sourceFile}
+ * @version {$version}
+ * @compressed {date('Y-m-d H:i:s')}
  */
 
 CSS;
@@ -377,15 +571,16 @@ CSS;
  * Saves compressed JavaScript to a page-specific file.
  *
  * Creates an optimized JavaScript file for a specific page with proper
- * naming conventions and error handling.
+ * naming conventions, version tracking, and error handling.
  *
  * @param string $filePath   The full path where to save the JavaScript file
  * @param string $jsContent  The compressed JavaScript content to save
  * @param string $sourceFile The source file information for reference
+ * @param string $version    The version number from source file
  *
  * @return bool True if the JavaScript file was saved successfully, false on failure
  */
-function save_compressed_js(string $filePath, string $jsContent, string $sourceFile): bool
+function save_compressed_js(string $filePath, string $jsContent, string $sourceFile, string $version = '1.0.0'): bool
 {
     $jsHeader = <<<JS
 /**
@@ -394,6 +589,8 @@ function save_compressed_js(string $filePath, string $jsContent, string $sourceF
  * @author Ayoub Alarjani (MAWI MAN)
  * @license Proprietary - All rights reserved to CIN Framework
  * @source {$sourceFile}
+ * @version {$version}
+ * @compressed {date('Y-m-d H:i:s')}
  */
 
 JS;

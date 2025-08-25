@@ -11,7 +11,7 @@ declare(strict_types=1);
  *
  * @package CIN Framework
  * @author Ayoub Alarjani (MAWI MAN)
- * @version 2.0.0
+ * @version 2.1.0
  * @license Proprietary - All rights reserved to CIN Framework
  */
 

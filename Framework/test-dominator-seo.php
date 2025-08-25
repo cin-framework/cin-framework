@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/cin/cin.php';
 
+/**
+* Dominator SEO 1
+**/
 // Test all dominator_seo_meta_ functions
 dominator_seo_meta_titel('CIN Framework - Complete SEO Test');
 dominator_seo_meta_description('This is a comprehensive test page for all CIN Framework SEO functions and dynamic variables.');
@@ -14,7 +17,7 @@ dominator_seo_meta_image('https://www.cin-framework.com/assets/images/logo.png')
 dominator_seo_meta_url('https://www.cin-framework.com/test-seo');
 dominator_seo_meta_site_name('CIN Framework');
 dominator_seo_meta_viewport('width=device-width, initial-scale=1.0');
-dominator_seo_meta_copyright('© 2025 CIN Framework. All rights reserved.');
+dominator_seo_meta_copyright('© 2024 CIN Framework. All rights reserved.');
 dominator_seo_meta_language('ar');
 dominator_seo_meta_revisit_after('7 days');
 dominator_seo_meta_rating('general');
@@ -25,7 +28,6 @@ dominator_seo_meta_mobile_web_app_capable('yes');
 dominator_seo_meta_apple_mobile_web_app_capable('yes');
 dominator_seo_meta_apple_mobile_web_app_status_bar_style('black-translucent');
 dominator_seo_meta_format_detection('telephone=no');
-
 // Test Open Graph and Twitter functions
 dominator_seo_og_type('website');
 dominator_seo_og_title('CIN Framework - Complete SEO Test (OG)');
@@ -33,29 +35,75 @@ dominator_seo_og_description('This is the Open Graph description for CIN Framewo
 dominator_seo_og_image('https://www.cin-framework.com/assets/images/og-logo.png');
 dominator_seo_og_url('https://www.cin-framework.com/test-seo-og');
 dominator_seo_og_site_name('CIN Framework Official');
-
 dominator_seo_twitter_card('summary_large_image');
 dominator_seo_twitter_title('CIN Framework - Complete SEO Test (Twitter)');
 dominator_seo_twitter_description('This is the Twitter description for CIN Framework SEO test page.');
 dominator_seo_twitter_image('https://www.cin-framework.com/assets/images/twitter-logo.png');
-
 // Test Article functions
 dominator_seo_article_author('Ayoub Alarjani (MAWI MAN) - Article Author');
 dominator_seo_article_published_time('2024-01-15T10:00:00Z');
 dominator_seo_article_modified_time('2024-01-16T15:30:00Z');
 dominator_seo_article_section('Technology');
 dominator_seo_article_tag('PHP, Framework, SEO');
-
 // Test Geo functions
 dominator_seo_geo_region('MA');
 dominator_seo_geo_placename('Fés');
 dominator_seo_geo_position('34.0331,-5.0003');
-
 // Test Structured Data functions
 dominator_seo_structured_data_type('WebPage');
 dominator_seo_structured_data_name('CIN Framework Test Page');
 dominator_seo_structured_data_description('Complete test page for CIN Framework SEO system');
 dominator_seo_structured_data_url('https://www.cin-framework.com/test-seo');
+
+
+/**
+* Dominator SEO 2
+**/
+// Set dynamic SEO values for enhanced testing
+$dominator_dynamic_seo_values = [
+    'titel' => 'CIN Framework - Complete SEO Test with Dynamic Variables',
+    'description' => 'Comprehensive test page for all CIN Framework SEO functions and dynamic variables with enhanced features',
+    'keywords' => 'CIN Framework, PHP, SEO, Test, Meta Tags, Open Graph, Twitter Cards, Dynamic Variables',
+    'author' => 'Ayoub Alarjani (MAWI MAN)',
+    'robots' => 'index, follow',
+    'image' => 'https://www.cin-framework.com/assets/images/logo.png',
+    'url' => 'https://www.cin-framework.com/test-seo',
+    'site_name' => 'CIN Framework',
+    'viewport' => 'width=device-width, initial-scale=1.0',
+    'copyright' => '© 2024 CIN Framework. All rights reserved.',
+    'language' => 'ar',
+    'revisit_after' => '7 days',
+    'rating' => 'general',
+    'distribution' => 'global',
+    'coverage' => 'worldwide',
+    'theme_color' => '#007bff',
+    'mobile_web_app_capable' => 'yes',
+    'apple_mobile_web_app_capable' => 'yes',
+    'apple_mobile_web_app_status_bar_style' => 'black-translucent',
+    'format_detection' => 'telephone=no',
+    'og_type' => 'website',
+    'og_title' => 'CIN Framework - Complete SEO Test (OG)',
+    'og_description' => 'This is the Open Graph description for CIN Framework SEO test page.',
+    'og_image' => 'https://www.cin-framework.com/assets/images/og-logo.png',
+    'og_url' => 'https://www.cin-framework.com/test-seo-og',
+    'og_site_name' => 'CIN Framework Official',
+    'twitter_card' => 'summary_large_image',
+    'twitter_title' => 'CIN Framework - Complete SEO Test (Twitter)',
+    'twitter_description' => 'This is the Twitter description for CIN Framework SEO test page.',
+    'twitter_image' => 'https://www.cin-framework.com/assets/images/twitter-logo.png',
+    'article_author' => 'Ayoub Alarjani (MAWI MAN) - Article Author',
+    'article_published_time' => '2024-01-15T10:00:00Z',
+    'article_modified_time' => '2024-01-16T15:30:00Z',
+    'article_section' => 'Technology',
+    'article_tag' => 'PHP, Framework, SEO',
+    'geo_region' => 'MA',
+    'geo_placename' => 'Fés',
+    'geo_position' => '34.0331,-5.0003',
+    'structured_data_type' => 'WebPage',
+    'structured_data_name' => 'CIN Framework Test Page',
+    'structured_data_description' => 'Complete test page for CIN Framework SEO system',
+    'structured_data_url' => 'https://www.cin-framework.com/test-seo'
+];
 
 dominator();
 
