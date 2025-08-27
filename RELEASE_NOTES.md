@@ -3,7 +3,6 @@
 Stay updated with the latest changes, improvements, and features in CIN Framework.
 
 ## Version 2.0.0 - Initial Release
-**Released: January 2025**
 
 ### 🎉 Welcome to CIN Framework!
 This is the initial release of CIN Framework - Start CIN Framework.
