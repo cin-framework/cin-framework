@@ -18,7 +18,7 @@
 
 ---
 
-**CIN Framework** is an advanced web framework built on PHP, designed to push the boundaries of modern web development.
+**CIN Framework v2.0.0** is a powerful, secure, and efficient PHP framework designed for modern web development with Web 4.0 support and modern architectural engineering. Built with aggressive security measures and local self-sufficiency in mind, CIN provides developers with a robust foundation for creating high-performance web applications.
 
 This repository serves as the official storage for the CIN Framework source code.
 
