@@ -100,6 +100,4 @@ Unauthorized use is strictly prohibited.
 
 ---
 
-*Last Updated: 2025-01-20*
-
-> © 2025 CIN FRAMEWORK — All Rights Reserved.
+> © CIN FRAMEWORK — All Rights Reserved.

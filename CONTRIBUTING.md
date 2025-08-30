@@ -136,7 +136,7 @@ The CIN Framework is built on the principle of **"Code In Nothing"** - where the
 
 ## 📜 Legal Information
 
-**Copyright © 2025-08-21 CIN FRAMEWORK. All Rights Reserved.**
+**Copyright © CIN FRAMEWORK. All Rights Reserved.**
 
 Developed by Ayoub Alarjani (Mawi Man) | Official Website: [www.cin-framework.com](https://www.cin-framework.com)
 
@@ -152,7 +152,7 @@ All code, documentation, and associated materials are the exclusive property of 
 - All usage must comply with the proprietary license terms
 - Unauthorized distribution or modification is strictly prohibited
 
-This repository policy is governed by the laws of Morocco and is effective as of 2025-08-21.
+This repository policy is governed by the laws of Morocco and is effective as of 2025.
 
 ---
 

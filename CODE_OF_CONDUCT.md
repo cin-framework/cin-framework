@@ -78,11 +78,11 @@ If you have questions, please see our [FAQ](https://www.cin-framework.com/p/0.ht
 
 ## Legal Information
 
-**Copyright © 2025-08-21 CIN FRAMEWORK. All Rights Reserved.**
+**Copyright © CIN FRAMEWORK. All Rights Reserved.**
 
 Developed by Ayoub Alarjani (Mawi Man) | Official Website: [www.cin-framework.com](https://www.cin-framework.com)
 
-This code of conduct is governed by the laws of Morocco and is effective as of 2025-08-21.
+This code of conduct is governed by the laws of Morocco and is effective as of 2025.
 
 ---
 

@@ -291,7 +291,7 @@ We value and recognize security researchers who help improve CIN Framework secur
 
 ## 📜 Legal Information
 
-**Copyright © 2025-08-21 CIN FRAMEWORK. All Rights Reserved.**
+**Copyright © CIN FRAMEWORK. All Rights Reserved.**
 
 Developed by Ayoub Alarjani (Mawi Man) | Official Website: [www.cin-framework.com](https://www.cin-framework.com)
 
@@ -308,7 +308,7 @@ This framework security policy is part of the CIN Framework Proprietary License 
 - **Limitation of Liability**: Limited liability for framework security incidents
 - **User Responsibility**: Users responsible for secure framework implementation
 
-This framework security policy is effective as of 2025-08-21 and is subject to updates.
+This framework security policy is effective as of 2025 and is subject to updates.
 
 ---
 
@@ -360,8 +360,6 @@ Unauthorized use is strictly prohibited.
 
 ---
 
-*Last Updated: 2025-01-20*
-
-> © 2025 CIN FRAMEWORK — All Rights Reserved.
+> © CIN FRAMEWORK — All Rights Reserved.
 
 **Official Slogan**: CIN FRAMEWORK – WEB 4 – POWERED BY LOCAL SELF-SUFFICIENCY AND AGGRESSIVE SECURITY

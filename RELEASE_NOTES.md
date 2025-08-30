@@ -18,5 +18,5 @@ Start CIN Framework - This marks the beginning of our journey to revolutionize w
 
 ---
 
-*© 2025 CIN FRAMEWORK — All Rights Reserved*  
+*© CIN FRAMEWORK — All Rights Reserved*  
 *Proprietary License | Ayoub Alarjani | Mawi Man*
