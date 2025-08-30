@@ -60,6 +60,4 @@ Unauthorized use is strictly prohibited.
 
 ---
 
-*Last Updated: 2025-08-21*
-
 > © 2025 CIN FRAMEWORK — All Rights Reserved.
