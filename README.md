@@ -32,6 +32,27 @@ To download and install the CIN Framework, you must use the official **CIN CLI**
 
 **Get CIN CLI:** [https://github.com/cin-framework/cin-cli](https://github.com/cin-framework/cin-cli)
 
+#### Framework Management Commands
+```bash
+# Install latest version of CIN Framework
+install framework
+
+# Install specific version of CIN Framework
+install framework <version>
+
+# Update CIN Framework to latest version
+update framework
+
+# Delete CIN Framework
+delete framework
+
+# Examples:
+install framework
+install framework v1.0.0
+update framework
+delete framework
+```
+
 For detailed installation instructions and CLI usage, visit our official website.
 
 ---
