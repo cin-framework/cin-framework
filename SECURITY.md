@@ -323,6 +323,36 @@ This framework security policy is effective as of 2025-08-21 and is subject to u
 
 ---
 
+## 🌐 OFFICIAL RESOURCES
+
+**Website**: [www.cin-framework.com](https://www.cin-framework.com)
+
+**Related Repositories**:
+- **CIN Framework Core**: [https://github.com/cin-framework/cin-framework](https://github.com/cin-framework/cin-framework)
+- **CIN CLI Tool**: [https://github.com/cin-framework/cin-cli](https://github.com/cin-framework/cin-cli)
+- **CIN Library**: [https://github.com/cin-framework/cin-library](https://github.com/cin-framework/cin-library)
+- **Official Website**: [https://github.com/cin-framework/.github](https://github.com/cin-framework/.github)
+
+**Contact Information**:
+- **Support**: support@cin-framework.com
+- **General Contact**: contact@cin-framework.com
+- **Development**: dev@cin-framework.com
+- **Administration**: admin@cin-framework.com
+- **Creator**: mawi@cin-framework.com
+
+---
+
+## 📜 LEGAL INFORMATION
+
+This framework is proprietary software protected under the CIN Framework Proprietary License.  
+All rights are reserved by **CIN Framework**.  
+You may **modify** the source code for personal or internal use.  
+You may **NOT** redistribute, sublicense, or sell this framework in any form.
+
+Unauthorized use is strictly prohibited.
+
+---
+
 <div align="center">
   <strong>CIN Framework Core - Aggressive Security Foundation</strong><br>
   <em>Building the foundation for secure Web 4 applications.</em>
@@ -330,5 +360,8 @@ This framework security policy is effective as of 2025-08-21 and is subject to u
 
 ---
 
+*Last Updated: 2025-01-20*
+
+> © 2025 CIN FRAMEWORK — All Rights Reserved.
 
 **Official Slogan**: CIN FRAMEWORK – WEB 4 – POWERED BY LOCAL SELF-SUFFICIENCY AND AGGRESSIVE SECURITY
